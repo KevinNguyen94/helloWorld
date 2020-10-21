@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- JSExMoreEvents.html -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Example: Events onload, onmouseover and onmouseout</title>
+  
+  <style>
+    body {background-color:black; }
+
+    .highlight {color : white;}
+
+    .erase {color: red;}
+
+    .dot {color: black;}
+  </style>
+
+  <script>
+    window.onload = function(){init()};
+
+    // document.write("<a onmouseover=\"this.style.color='white'\">.</a>");
+    function init(){
+    
+      document.getElementById("btn1").onclick = changeText;
+      document.getElementById("btn2").onclick = draw;
+      document.getElementById("btn3").onclick = erase;
+      
+    }
+      
+    
+    function initMap(){
+      for(var line=0 ; line<=35; line++){
+        for( var i =0 ; i <= 300; i++){
+          document.write("<a class=\"dot\" >.</a>");
+        }
+        document.write("<br>");    
+      }
+    }
+
+   
+    function changeText(){
+      var elm = document.getElementById("text");  // One element
+      elm.innerHTML = "Hello";
+    }
+    
+    function draw(){
+      var elms = document.getElementsByClassName("dot");
+      for (var i = 0; i < elms.length; i++) {
+        elms[i].onmouseover = function(){this.className = "highlight"};
+      }
+    }
+
+    function erase(){
+      var elms = document.getElementsByClassName("dot");
+      for (var i = 0; i < elms.length; i++) {
+        elms[i].onmouseout = function(){this.className = "dot"};
+      }
+    }
+
+ </script>
+
+</head>
+<body>
+  <p style="color:red">"Hello" alert Box appears <em>after</em> the page is loaded.</p>
+  <p id="text" onmouseover="this.style.color='red'" style="color: cyan;">Point your mouse pointer here!!!</p>
+  <input type="button" id="btn1" value="draw" />
+  <input type="button" id="btn2" value="draw the map" />
+  <input type="button" id="btn3" value="erase the map" />
+
+  <script>
+    for(var line=0 ; line<=35; line++){
+        for( var i =0 ; i <= 300; i++){
+          document.write("<a class=\"dot\" >.</a>");
+        }
+        document.write("<br>");    
+      }
+  </script>
+     
+     
+</body>
+</html>
